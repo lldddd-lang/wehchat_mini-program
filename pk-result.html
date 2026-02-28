@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PK比赛结果 - 吃回本</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./src/styles/pk-result.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i></a>
+            <div class="header-title">PK比赛结果</div>
+            <div class="header-placeholder"></div>
+        </div>
+
+        <div class="content-area">
+            <!-- PK状态 -->
+            <div class="pk-status">
+                <div class="pk-badge" id="pkBadge">比赛进行中</div>
+                <div class="pk-timer" id="pkTimer">距离比赛结束还有 23:45:12</div>
+            </div>
+
+            <!-- 提交成功提示 -->
+            <div class="submit-status" id="submitStatus" style="display: none;">
+                <div class="submit-icon">
+                    <img src="images/yuanbao.png" alt="成功">
+                </div>
+                <div class="submit-title">提交成功!</div>
+                <div class="submit-text">你的参赛作品已提交，静待比赛结果~</div>
+            </div>
+
+            <!-- 我的成绩卡片 -->
+            <div class="my-score-card">
+                <div class="my-rank">当前排名</div>
+                <div class="my-rank-number" id="myRank">第3名</div>
+                <div class="my-score-details">
+                    <div class="score-item">
+                        <div class="score-label">性价比得分</div>
+                        <div class="score-value highlight" id="myScore">86.5</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-label">菜品估价</div>
+                        <div class="score-value" id="myEstimate">¥68</div>
+                    </div>
+                    <div class="score-item">
+                        <div class="score-label">实付金额</div>
+                        <div class="score-value" id="myPaid">¥42</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 比赛进行中提示 -->
+            <div class="ongoing-tip" id="ongoingTip">
+                <i class="fa-solid fa-clock"></i>
+                <p>比赛进行中，排名随时可能变化<br>邀请更多好友参与，提升获奖概率!</p>
+            </div>
+
+            <!-- 排行榜 -->
+            <div class="leaderboard">
+                <div class="leaderboard-title">
+                    <i class="fa-solid fa-trophy"></i>
+                    实时排行榜
+                </div>
+
+                <div class="rank-item">
+                    <div class="rank-number gold">1</div>
+                    <div class="rank-avatar">阿</div>
+                    <div class="rank-info">
+                        <div class="rank-name">阿华</div>
+                        <div class="rank-dish">红烧牛肉面套餐</div>
+                    </div>
+                    <div class="rank-score">
+                        <div class="rank-score-value">92.3</div>
+                        <div class="rank-score-label">性价比</div>
+                    </div>
+                </div>
+
+                <div class="rank-item">
+                    <div class="rank-number silver">2</div>
+                    <div class="rank-avatar">小</div>
+                    <div class="rank-info">
+                        <div class="rank-name">小红</div>
+                        <div class="rank-dish">农家小炒肉</div>
+                    </div>
+                    <div class="rank-score">
+                        <div class="rank-score-value">89.1</div>
+                        <div class="rank-score-label">性价比</div>
+                    </div>
+                </div>
+
+                <div class="rank-item me">
+                    <div class="rank-number bronze">3</div>
+                    <div class="rank-avatar me">我</div>
+                    <div class="rank-info">
+                        <div class="rank-name">我 (团长)</div>
+                        <div class="rank-dish">宫保鸡丁盖饭</div>
+                    </div>
+                    <div class="rank-score">
+                        <div class="rank-score-value">86.5</div>
+                        <div class="rank-score-label">性价比</div>
+                    </div>
+                </div>
+
+                <div class="rank-item">
+                    <div class="rank-number">4</div>
+                    <div class="rank-avatar">大</div>
+                    <div class="rank-info">
+                        <div class="rank-name">大壮</div>
+                        <div class="rank-dish">兰州拉面</div>
+                    </div>
+                    <div class="rank-score">
+                        <div class="rank-score-value">82.7</div>
+                        <div class="rank-score-label">性价比</div>
+                    </div>
+                </div>
+
+                <div class="rank-item">
+                    <div class="rank-number">5</div>
+                    <div class="rank-avatar">小</div>
+                    <div class="rank-info">
+                        <div class="rank-name">小李</div>
+                        <div class="rank-dish">黄焖鸡米饭</div>
+                    </div>
+                    <div class="rank-score">
+                        <div class="rank-score-value">78.4</div>
+                        <div class="rank-score-label">性价比</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 奖励说明 -->
+            <div class="prize-section" id="prizeSection" style="display: none;">
+                <div class="prize-title">🎉 恭喜获得团长红包!</div>
+                <div class="prize-amount">¥5.00</div>
+                <div class="prize-text">作为团长，无论排名如何都会获得红包奖励</div>
+            </div>
+
+            <!-- 底部按钮 -->
+            <div class="bottom-actions">
+                <div class="action-buttons">
+                    <a href="scan-process-pk.html" class="btn-secondary">
+                        <i class="fa-solid fa-camera"></i> 重新拍照
+                    </a>
+                    <a href="index.html" class="btn-primary">返回领红包</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="./src/app/pk-result.js"></script>
+</body>
+
+</html>

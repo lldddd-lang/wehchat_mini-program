@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PK比赛拍照 - 吃回本</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./src/styles/scan-process-pk.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Floating Overlays -->
+        <div class="header">
+            <div class="back-btn" onclick="goBack()">
+                <i class="fa-solid fa-arrow-left"></i>
+            </div>
+            <div class="header-title">PK比赛拍照</div>
+            <div class="header-placeholder"></div>
+        </div>
+
+        <!-- PK提示横幅 (Floating) -->
+        <div class="pk-banner" id="pkBanner">
+            <div class="pk-banner-icon"><img src="images/ok.png" alt="Caishen"></div>
+            <div class="pk-banner-text">
+                <div class="pk-banner-title">拍摄你的美食，参与PK!</div>
+                <div class="pk-banner-desc">系统将分析性价比得分，争夺团队冠军</div>
+            </div>
+            <div class="pk-banner-close" onclick="document.getElementById('pkBanner').style.display='none'">×</div>
+        </div>
+
+        <!-- Camera View -->
+        <div class="camera-view">
+            <video id="videoElement" autoplay playsinline></video>
+
+            <!-- 扫描框 -->
+            <div class="scan-frame">
+                <div class="scan-corner-tl"></div>
+                <div class="scan-corner-tr"></div>
+                <div class="scan-corner-bl"></div>
+                <div class="scan-corner-br"></div>
+                <div class="scan-line"></div>
+            </div>
+
+            <!-- 提示文字 -->
+            <div class="scan-hint">🍽️ 将美食放入框内拍照</div>
+        </div>
+
+        <!-- Control Bar -->
+        <div class="control-bar">
+            <!-- 闪光灯 -->
+            <div class="flash-btn" id="flashBtn" onclick="toggleFlash()">
+                <i class="fa-solid fa-bolt"></i>
+            </div>
+
+            <!-- 拍照按钮 -->
+            <div class="capture-btn" onclick="takePhoto()"></div>
+
+            <!-- 从相册选择 -->
+            <div class="gallery-btn" onclick="showActionSheet()">
+                <i class="fa-solid fa-image"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Elements -->
+    <input type="file" id="fileInput" accept="image/*" onchange="handleFileSelect(event)" style="display: none;">
+    <div class="permission-tip" id="permissionTip">
+        <div class="tip-content">
+            <i class="fa-solid fa-camera"></i>
+            <p>需要相机权限才能拍照<br>请在设置中开启相机权限</p>
+        </div>
+    </div>
+    <div class="action-sheet-overlay" id="actionSheetOverlay" onclick="hideActionSheet()"></div>
+    <div class="action-sheet" id="actionSheet">
+        <div class="action-sheet-item" onclick="chooseFromGallery()">从手机相册选择</div>
+        <div class="action-sheet-item cancel" onclick="hideActionSheet()">取消</div>
+    </div>
+
+    <script src="./src/app/scan-process-pk.js"></script>
+</body>
+
+</html>

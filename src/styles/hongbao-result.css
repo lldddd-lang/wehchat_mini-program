@@ -1,0 +1,103 @@
+
+:root {
+            --primary: #E53935;
+            --primary-dark: #C62828;
+            --accent: #FFD700;
+            --bg-dark: #2D1515;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 430px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: #3D1818;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .result-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-10px);
+            }
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .amount {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--accent);
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+            margin-bottom: 16px;
+        }
+
+        .sub-text {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4);
+        }
+
+        .helper-link {
+            display: block;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #999;
+            text-decoration: underline;
+        }
